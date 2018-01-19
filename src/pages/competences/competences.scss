@@ -1,4 +1,4 @@
-page-skill {
+page-competences {
 
 	@import url("https://fonts.googleapis.com/css?family=Raleway");
 
@@ -13,7 +13,7 @@ page-skill {
 
 	body
 	{
-	    background: #333;
+	    // background: #333;
 		color: #fff;
 		font-family: 'Raleway';
 		max-width: 100%;
@@ -422,4 +422,23 @@ page-skill {
 
 	}
 
+}
+
+.content-page
+{
+	background: #fff;
+}
+
+.content-skill
+{
+	background: #fff;
+	margin: auto;
+	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.item-skill
+{
+	background: #fff;
 }

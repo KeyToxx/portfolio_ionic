@@ -1,0 +1,55 @@
+page-a_propos {
+
+	@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+	html
+	{
+		-moz-user-select: -moz-none;
+	    -webkit-user-select: none;
+	    -khtml-user-select: none;
+	    -o-user-select: none;
+	    user-select: none;
+	}
+
+	body
+	{
+	    // background: #333;
+		color: #fff;
+		font-family: 'Raleway';
+		max-width: 100%;
+	}
+
+	.vertical-center {
+	  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+	
+	.thumb
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 50%;
+		min-height: 50vh;
+
+		img
+		{
+			display: block;
+			margin: auto;
+			background: #3f3f3f;
+			border: 3px solid #000;
+			border-radius: 50%;
+			box-shadow: 3px 3px 3px 3px rgba(0,0,0,.5);
+		}
+	}
+
+	.text
+	{
+		font-size: 1.6rem;
+	}
+
+}

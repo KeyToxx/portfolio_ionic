@@ -5,9 +5,10 @@ import { HttpModule } from '@angular/http';
 
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { AccueilPage } from '../pages/accueil/accueil';
 import { ListPage } from '../pages/list/list';
-import { SkillPage } from '../pages/skill/skill';
+import { CompetencesPage } from '../pages/competences/competences';
+import { AproposPage } from '../pages/a_propos/a_propos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,9 +16,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    AccueilPage,
     ListPage,
-    SkillPage
+    CompetencesPage,
+    AproposPage
   ],
   imports: [
     HttpModule,
@@ -27,9 +29,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    AccueilPage,
     ListPage,
-    SkillPage
+    CompetencesPage,
+    AproposPage
   ],
   providers: [
     StatusBar,

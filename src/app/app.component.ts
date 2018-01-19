@@ -3,9 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { AccueilPage } from '../pages/accueil/accueil';
 import { ListPage } from '../pages/list/list';
-import { SkillPage } from '../pages/skill/skill';
+import { CompetencesPage } from '../pages/competences/competences';
+import { AproposPage } from '../pages/a_propos/a_propos';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +14,7 @@ import { SkillPage } from '../pages/skill/skill';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = AproposPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,9 +23,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'A propos', component: AproposPage },
+      { title: 'Accueil', component: AccueilPage },
       { title: 'List', component: ListPage },
-      { title: 'Skill', component: SkillPage }
+      { title: 'Mes compétences', component: CompetencesPage }
     ];
 
   }
