@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mes Réalisations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngFor="let item of data">
+    
+    <ion-grid>
+      
+      <ion-row>
+      
+        <ion-col text-center>
+          <a target="_blank" href="{{item.lien}}">
+            <img src="https://www.aformac-vichy-app7.ovh/{{item.image}}" alt="image {{item.name}}">
+          </a>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+
+</ion-content>

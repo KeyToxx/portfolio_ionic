@@ -6,20 +6,32 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
-import { ListPage } from '../pages/list/list';
-import { CompetencesPage } from '../pages/competences/competences';
 import { AproposPage } from '../pages/a_propos/a_propos';
+import { CompetencesPage } from '../pages/competences/competences';
+import { ProjetsPage } from '../pages/projets/projets';
+import { ContactPage } from '../pages/contact/contact';
+
+import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { MessageServiceProvider } from '../providers/message-service/message-service';//
+import { TokenServiceProvider } from '../providers/token-service/token-service';//
 
 @NgModule({
   declarations: [
     MyApp,
     AccueilPage,
-    ListPage,
+    AproposPage,
     CompetencesPage,
-    AproposPage
+    ProjetsPage,
+    ContactPage,
+    SignupPage,
+    LoginPage
   ],
   imports: [
     HttpModule,
@@ -30,14 +42,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     AccueilPage,
-    ListPage,
+    AproposPage,
     CompetencesPage,
-    AproposPage
+    ProjetsPage,
+    ContactPage,
+    SignupPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider,
+    MessageServiceProvider,
+    TokenServiceProvider
   ]
 })
 export class AppModule {}

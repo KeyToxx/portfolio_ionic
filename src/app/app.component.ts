@@ -4,9 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AccueilPage } from '../pages/accueil/accueil';
-import { ListPage } from '../pages/list/list';
-import { CompetencesPage } from '../pages/competences/competences';
 import { AproposPage } from '../pages/a_propos/a_propos';
+import { CompetencesPage } from '../pages/competences/competences';
+import { ProjetsPage } from '../pages/projets/projets';
+import { ContactPage } from '../pages/contact/contact';
+
+
+import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +19,7 @@ import { AproposPage } from '../pages/a_propos/a_propos';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AproposPage;
+  rootPage: any = AccueilPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -23,10 +28,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'A propos', component: AproposPage },
       { title: 'Accueil', component: AccueilPage },
-      { title: 'List', component: ListPage },
-      { title: 'Mes compétences', component: CompetencesPage }
+      { title: 'A propos', component: AproposPage },
+      { title: 'Mes compétences', component: CompetencesPage },
+      { title: 'Mes Réalisations', component: ProjetsPage },
+      { title: 'Contact', component: ContactPage },
+      //{ title: 'Inscription', component: SignupPage },
+      //{ title: 'Connexion Administrateur', component: LoginPage }
     ];
 
   }
