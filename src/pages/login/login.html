@@ -8,21 +8,22 @@
 </ion-header>
 
 <ion-content padding class="vertical-center">
+    
+      <form (ngSubmit)="logForm()">
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="dataForm.email" name="email" required minlength="8"></ion-input>
+        </ion-item>
 
-    <form (ngSubmit)="logForm()">
-      <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="dataForm.email" name="email" required minlength="8"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="dataForm.password" name="password"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="dataForm.password" name="password"></ion-input>
-      </ion-item>
+        <button type="ngSubmit">Connexion</button>
+      </form>
 
-      <button type="ngSubmit">Connexion</button>
-    </form>
+      <a (click)="navigatePage()">Si vous n'êtes pas Administrateur cliquez-ici !</a>
 
-    <a (click)="navigatePage()">Si vous n'êtes pas Administrateur cliquez-ici !</a>
 
 </ion-content>

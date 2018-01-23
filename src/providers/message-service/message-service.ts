@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';//
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';//
@@ -21,6 +21,10 @@ private token: string;
   constructor(private http: Http, private tokenService: TokenServiceProvider) {
     //console.log('Hello MessageServiceProvider Provider');
     this.token = tokenService.getToken();
+  }
+
+  getToken() { 
+    return this.token;
   }
 
   getMessages(){
