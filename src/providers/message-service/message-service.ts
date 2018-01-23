@@ -4,12 +4,14 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';//
 import 'rxjs/add/operator/do';//
 import { TokenServiceProvider } from '../token-service/token-service';
+
 /*
   Generated class for the MessageServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
 @Injectable()
 export class MessageServiceProvider {
 
@@ -23,7 +25,7 @@ private token: string;
 
   getMessages(){
   	return this.http.get(this.url+this.token)
-  	.do(res => console.log(res));
+  	.do((res: Response) => { res });
   }
 
 }

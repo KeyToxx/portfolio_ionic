@@ -10,7 +10,7 @@ import { ProjetsPage } from '../pages/projets/projets';
 import { ContactPage } from '../pages/contact/contact';
 
 
-import { SignupPage } from '../pages/signup/signup';
+// import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
@@ -19,7 +19,7 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AccueilPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -34,7 +34,7 @@ export class MyApp {
       { title: 'Mes Réalisations', component: ProjetsPage },
       { title: 'Contact', component: ContactPage },
       //{ title: 'Inscription', component: SignupPage },
-      //{ title: 'Connexion Administrateur', component: LoginPage }
+      { title: 'Connexion Administrateur', component: LoginPage }
     ];
 
   }

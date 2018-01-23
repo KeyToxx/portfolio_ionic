@@ -15,6 +15,6 @@ export class TokenServiceProvider {
   	}
 
   	login(email:string, password:string){
-  		this.token = 'OmrTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV';
+  		this.token = '';//Récuperer le token dynamiquement
   	}
 }

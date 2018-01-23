@@ -11,7 +11,7 @@ import { CompetencesPage } from '../pages/competences/competences';
 import { ProjetsPage } from '../pages/projets/projets';
 import { ContactPage } from '../pages/contact/contact';
 
-import { SignupPage } from '../pages/signup/signup';
+// import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 
 
@@ -30,7 +30,7 @@ import { TokenServiceProvider } from '../providers/token-service/token-service';
     CompetencesPage,
     ProjetsPage,
     ContactPage,
-    SignupPage,
+    // SignupPage,
     LoginPage
   ],
   imports: [
@@ -46,7 +46,7 @@ import { TokenServiceProvider } from '../providers/token-service/token-service';
     CompetencesPage,
     ProjetsPage,
     ContactPage,
-    SignupPage,
+    // SignupPage,
     LoginPage
   ],
   providers: [
