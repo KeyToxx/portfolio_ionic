@@ -19,7 +19,6 @@ private url: string = "https://www.aformac-vichy-app7.ovh/api/user?api_token=";
 private token: string;
 
   constructor(private http: Http, private tokenService: TokenServiceProvider) {
-    //console.log('Hello MessageServiceProvider Provider');
     this.token = tokenService.getToken();
   }
 

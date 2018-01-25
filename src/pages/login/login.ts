@@ -1,3 +1,5 @@
+// import { Headers, RequestOptions } from '@angular/http';
+// import 'rxjs/add/operator/toPromise';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
@@ -20,7 +22,8 @@ export class LoginPage {
   private token:string;
 
   constructor(public navCtrl: NavController, public http: Http, private messageService: MessageServiceProvider, private tokenService: TokenServiceProvider) {
-  	this.getMessages();
+    // headers.append('Access-Control-Allow-Origin','*');
+    this.getMessages();
 
      http.get('https://www.aformac-vichy-app7.ovh/api/data?email='+this.dataForm['email']+"&password="+this.dataForm['password'])
     .subscribe(data => { this.data = data.json()});
