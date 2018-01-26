@@ -1,5 +1,6 @@
-// import { Headers, RequestOptions } from '@angular/http';
-// import 'rxjs/add/operator/toPromise';
+import {Injectable} from '@angular/core';
+import { Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
@@ -16,56 +17,27 @@ import { AccueilPage } from '../accueil/accueil';
 export class LoginPage {
   
   private data:{};
+  public message:string = '';
 
-  private dataForm = {};
+  private dataForm = {
+    'email'    : null,
+    'password' : null
+  };
 
-  private token:string;
-
-  constructor(public navCtrl: NavController, public http: Http, private messageService: MessageServiceProvider, private tokenService: TokenServiceProvider) {
-    // headers.append('Access-Control-Allow-Origin','*');
-    this.getMessages();
-
-     http.get('https://www.aformac-vichy-app7.ovh/api/data?email='+this.dataForm['email']+"&password="+this.dataForm['password'])
-    .subscribe(data => { this.data = data.json()});
-    
-    this.token = tokenService.getToken();
+  constructor(private tsp: TokenServiceProvider, private navCtrl: NavController){
   }
 
-  getData(){
-    return this.data;
+  login() {
+    this.tsp.login(this.dataForm.email, this.dataForm.password);
+    this.redirect();
   }
 
-  getMessages(){
-  	this.messageService.getMessages().subscribe(data => { this.data = data.json()});
+  redirect() {
+    if(this.tsp.getToken() != '') {
+      this.navCtrl.setRoot(AccueilPage);
+    }else{
+      this.message = 'Erreur de connexion.'
+    }
   }
-
-  login(email: string, password: string){
-
-  	 if (this.data[0]['email'] == this.dataForm['email']) {
-       console.log('email OK');
-     }
-
-  }
-
-  logForm() {
-    //console.log(this.data);
-    //console.log("https:/www.aformac-vichy-app7.ovh/api/data?email="+this.dataForm['email']+"&password="+this.dataForm['password']);
-    //http.get('https://www.aformac-vichy-app7.ovh/api/data?email='+this.dataForm['email']+"&password="+this.dataForm['password'])
-    //.subscribe(data => { this.data = data.json()});
-  }
-
-  navigatePage() {
-    // Let's navigate from TabsPage to Page1
-    this.navCtrl.setRoot(AccueilPage);
-  }
-
-
-  // private data = '';
-
-  // constructor(public navCtrl: NavController,public http: Http) {
-  // 	http.get('https://www.aformac-vichy-app7.ovh/api/user?api_token=OmrTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV')
-  //     .subscribe(data => { this.data = data.json()});
-  // }
-
 
 }

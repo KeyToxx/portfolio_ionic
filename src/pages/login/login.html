@@ -9,7 +9,7 @@
 
 <ion-content padding class="vertical-center">
     
-      <form (ngSubmit)="logForm()">
+      <form (ngSubmit)="login()">
         <ion-item>
           <ion-label>Email</ion-label>
           <ion-input type="email" [(ngModel)]="dataForm.email" name="email" required minlength="8"></ion-input>
@@ -22,7 +22,7 @@
 
         <button type="ngSubmit">Connexion</button>
       </form>
-
+      {{ message }}
       <a (click)="navigatePage()">Si vous n'êtes pas Administrateur cliquez-ici !</a>
 
 

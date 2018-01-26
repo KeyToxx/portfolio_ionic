@@ -1,21 +1,29 @@
-// import { HttpClient } from '@angular/common/http';
-// import { Http } from '@angular/http';//
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';//
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TokenServiceProvider {
-	private token: string = 'OmrTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV';//'OmrTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV';
-
-	  constructor() {
+	private static token: string = '';
+	private static url: string = 'https://www.aformac-vichy-app7.ovh/api/data';
+	  
+	constructor(private http:Http) {
     	//console.log('Hello MessageServiceProvider Provider');
   	}
 
   	getToken() { 
-  		return this.token;
+  		return TokenServiceProvider.token;
   	}
 
   	login(email:string, password:string){
-  		this.token = '';//Récuperer le token dynamiquement
+  		let body = JSON.stringify({"email": email, "password": password});
+	    let headers = new Headers();
+	    headers.append('Content-Type', 'application/json');
+	    headers.append('Access-Control-Allow-Origin','*');
+	    return new Promise(resolve => {
+	        this.http.post(TokenServiceProvider.url+"?email="+email+"&password="+password, body, {headers: headers})
+	            .subscribe(response => TokenServiceProvider.token = response._body);
+	    });
 
   	}
 }
