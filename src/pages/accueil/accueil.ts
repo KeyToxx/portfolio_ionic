@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TokenServiceProvider } from '../../providers/token-service/token-service';
-import { LoginPage } from '../login/login';
+// import { LoginPage } from '../login/login'; //OBLIGATOIRE
 
 @Component({
   selector: 'page-accueil',
@@ -15,7 +15,7 @@ export class AccueilPage {
   constructor(public navCtrl: NavController, public tsp:TokenServiceProvider) {
   	this.token = tsp.getToken();
   	  if(this.token == '') {  	  	
-      	this.navCtrl.setRoot(LoginPage);
+      	//this.navCtrl.setRoot(LoginPage);
   	  }
   }
 
