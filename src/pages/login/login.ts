@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TokenServiceProvider } from '../../providers/token-service/token-service';
 
-// import { MyApp } from '../../app/app.component';
-import { AccueilPage } from '../accueil/accueil';
+import { MyApp } from '../../app/app.component';
 
 @Component({
   selector: 'page-login',
@@ -24,18 +23,15 @@ export class LoginPage {
   }
 
   login() {
-    this.tsp.login(this.dataForm.email, this.dataForm.password);
-    // this.redirect();
+     this.tsp.login(this.dataForm.email, this.dataForm.password);
+     this.afterLogin();
   }
-
-  // redirect() {
-  //   if(this.tsp.getToken() != '') {
-  //     this.message = 'Erreur de connexion.'
-  //   }else{
-  //     this.navCtrl.setRoot(AccueilPage);     
-  //   }
-  // }
-
+  afterLogin(public app: MyApp) {      
+     if(this.tsp.getToken()!=null && this.tsp.getRole() ===1 ) {
+       app.addAdminMenu();
+       this.navigatePage();
+     }
+  }
   navigatePage() {
     this.navCtrl.setRoot(AccueilPage);   
   }

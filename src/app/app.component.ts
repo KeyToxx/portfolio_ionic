@@ -8,6 +8,7 @@ import { AproposPage } from '../pages/a_propos/a_propos';
 import { CompetencesPage } from '../pages/competences/competences';
 import { ProjetsPage } from '../pages/projets/projets';
 import { ContactPage } from '../pages/contact/contact';
+import { TokenServiceProvider } from '../providers/token-service/token-service';
 
 
 // import { SignupPage } from '../pages/signup/signup';
@@ -22,10 +23,10 @@ export class MyApp {
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
+  private token:string;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Accueil', component: AccueilPage },
@@ -37,6 +38,17 @@ export class MyApp {
       { title: 'Connexion Administrateur', component: LoginPage }
     ];
 
+  }
+
+  addAdminMenu(public tsp:TokenServiceProvider) {    
+    this.token = tsp.getToken();
+    if(this.token === 1) {
+      pagesAdmin = [
+        { title: 'Test', component: AccueilPage },
+        { title: 'Essai', component: AproposPage }
+      ];
+      this.pages.concat(pagesAdmin);
+    }
   }
 
   initializeApp() {
