@@ -9,23 +9,64 @@
 
 <ion-content padding>
 
-<!-- 	<input id="name" name="name" class="form-control"
-	       required minlength="4" forbiddenName="bob"
-	       [(ngModel)]="contact.name" #name="ngModel" >
+<!--     <form (ngSubmit)="logForm()">
 
-	<div *ngIf="name.invalid && (name.dirty || name.touched)"
-	     class="alert alert-danger">
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.name" name="name"></ion-input>
+      </ion-item>
 
-	  <div *ngIf="name.errors.required">
-	    Name is required.
-	  </div>
-	  <div *ngIf="name.errors.minlength">
-	    Name must be at least 4 characters long.
-	  </div>
-	  <div *ngIf="name.errors.forbiddenName">
-	    Name cannot be Bob.
-	  </div>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="contact.email" name="email"></ion-input>
+      </ion-item>
 
-	</div> -->
+      <ion-item>
+        <ion-label>Sujet</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.sujet" name="sujet"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Message</ion-label>
+        <ion-textarea [(ngModel)]="contact.message" name="message"></ion-textarea>
+      </ion-item>
+
+      <button ion-button type="submit" block>Envoyez !</button>
+    </form> -->
+
+    <form method="POST" (ngSubmit)="onSubmit()" [formGroup]="msgContact">
+		<ion-item>
+			<ion-label>
+				Nom
+			</ion-label>
+			<ion-input type="text" id="name" formControlName="name"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>
+				Email
+			</ion-label>
+			<ion-input type="email" id="mail" formControlName="mail"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>
+				Sujet
+			</ion-label>
+			<ion-input type="text" id="sujet" formControlName="sujet"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>
+				Message
+			</ion-label>
+			<ion-input type="text" id="message" formControlName="message"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<button ion-button [disabled]="msgContact.invalid">Envoyez !</button>
+		</ion-item>
+    </form>
+
 
 </ion-content>

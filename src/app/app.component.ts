@@ -20,35 +20,43 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = ContactPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{font: any,title: string, component: any}>;
+
   private token:string;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Accueil', component: AccueilPage },
-      { title: 'A propos', component: AproposPage },
-      { title: 'Mes compétences', component: CompetencesPage },
-      { title: 'Mes Réalisations', component: ProjetsPage },
-      { title: 'Contact', component: ContactPage },
+      { font: 'home', title: 'Accueil', component: AccueilPage },
+      { font: 'pricetag', title: 'A propos', component: AproposPage },
+      { font: 'done-all', title: 'Mes compétences', component: CompetencesPage },
+      { font: 'code', title: 'Mes Réalisations', component: ProjetsPage },
+      { font: 'mail', title: 'Contact', component: ContactPage },
       //{ title: 'Inscription', component: SignupPage },
-      { title: 'Connexion Administrateur', component: LoginPage }
+      { font: 'log-in', title: 'Connexion Administrateur', component: LoginPage }
     ];
 
   }
 
-  addAdminMenu(public tsp:TokenServiceProvider) {    
+  addAdminMenu(tsp: TokenServiceProvider) {   
+
     this.token = tsp.getToken();
-    if(this.token === 1) {
-      pagesAdmin = [
-        { title: 'Test', component: AccueilPage },
-        { title: 'Essai', component: AproposPage }
-      ];
-      this.pages.concat(pagesAdmin);
+
+    if(this.token) {
+
+
+        let pagesAdmin = [
+          { title: 'Test', component: AccueilPage },
+          { title: 'Essai', component: AproposPage },
+        ];
+
+        this.pages.concat(pagesAdmin);
+
     }
+
   }
 
   initializeApp() {

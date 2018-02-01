@@ -19,7 +19,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-import { MessageServiceProvider } from '../providers/message-service/message-service';//
+// import { MessageServiceProvider } from '../providers/message-service/message-service';//
 import { TokenServiceProvider } from '../providers/token-service/token-service';//
 
 @NgModule({
@@ -54,7 +54,7 @@ import { TokenServiceProvider } from '../providers/token-service/token-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    MessageServiceProvider,
+    // MessageServiceProvider,
     TokenServiceProvider
   ]
 })

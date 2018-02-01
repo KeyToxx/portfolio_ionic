@@ -26,9 +26,9 @@ export class LoginPage {
      this.tsp.login(this.dataForm.email, this.dataForm.password);
      this.afterLogin();
   }
-  afterLogin(public app: MyApp) {      
-     if(this.tsp.getToken()!=null && this.tsp.getRole() ===1 ) {
-       app.addAdminMenu();
+  afterLogin() {      
+     if(this.tsp.getToken() != null && this.tsp.getRole() === 1 ) {
+       //MyApp.addAdminMenu();
        this.navigatePage();
      }
   }

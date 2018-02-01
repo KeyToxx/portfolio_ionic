@@ -13,16 +13,16 @@ export class TokenServiceProvider {
 	private static url: string = 'https://www.aformac-vichy-app7.ovh/api/data';
 	  
 	constructor(private http:Http) {
-    	//console.log('Hello MessageServiceProvider Provider');
+
   	}
 
-  	getToken() { 
-  		return TokenServiceProvider.arr.token;
-  	}
+  	// getToken() { 
+  	// 	return TokenServiceProvider.arr.token;
+  	// }
 
-  	getRole() { 
-  		return TokenServiceProvider.arr.admin;
-  	}
+  	// getRole() { 
+  	// 	return TokenServiceProvider.arr.admin;
+  	// }
  
   	login(email:string, password:string){
   		let body = JSON.stringify({"email": email, "password": password});

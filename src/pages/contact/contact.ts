@@ -1,30 +1,107 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
+import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
-export class ContactPage {
+export class ContactPage implements OnInit{
 
-  constructor(public navCtrl: NavController) {
+	msgContact: FormGroup;
+
+	// private contact:Object = {
+	// 	'name': null,
+	// 	'email': null,
+	// 	'sujet': null,
+	// 	'message': null
+	// };
+
+  constructor(public navCtrl: NavController,private formCtc: FormBuilder,public http: Http) {
 
   }
 
-//   ngOnInit(): void {
-//   this.heroForm = new FormGroup({
-//     'name': new FormControl(this.contact.name, [
-//       Validators.required,
-//       Validators.minLength(4),
-//       forbiddenNameValidator(/bob/i) // <-- Here's how you pass in the custom validator.
-//     ]),
-//     'alterEgo': new FormControl(this.contact.alterEgo),
-//     'power': new FormControl(this.contact.power, Validators.required)
-//   });
-// }
+    ngOnInit() {
 
-// get name() { return this.contactForm.get('name'); }
+       this.msgContact = this.formCtc.group({
 
-// get power() { return this.contactForm.get('power'); }
+            name: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]),
+
+            mail: new FormControl('', [Validators.required, Validators.email]),
+
+            sujet: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
+
+            message: new FormControl('', [Validators.required, Validators.minLength(20), Validators.maxLength(500)])
+
+        });
+
+
+
+    }
+
+    onSubmit(){ 
+
+     //    let loading = this.loadingCtrl.create({
+
+     //        content: "Chargement ..."
+
+    	// });
+
+     //    loading.present();    
+     	console.log(JSON.stringify(this.msgContact.value));
+
+        this.http.post('https://www.aformac-vichy-app7.ovh/api/contact?api_token=TeaTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV', JSON.stringify(this.msgContact.value)).subscribe(
+
+            data => {
+
+            	console.log(data);
+
+                // let alertSuccess = this.alertCtrl.create({
+
+                //     title: 'Message envoyé !',
+
+                //     subTitle: 'Merci d\'avoir pris le temps de m\'écrire.',
+
+                //     buttons: ['OK']
+
+                // });
+
+
+
+                this.msgContact.reset();
+
+                // loading.dismiss();
+
+                // alertSuccess.present();
+
+
+
+            },
+
+            error => {
+
+            	console.log(error);
+
+                // let alertSuccess = this.alertCtrl.create({
+
+                //     title: 'Oops !',
+
+                //     subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement ou me contacter directement à kozluk.pierre(at)gmail(dot)com.',
+
+                //     buttons: ['OK']
+
+                // });
+
+                // loading.dismiss();
+
+                // alertSuccess.present();
+
+            }
+
+        );
+
+    }
+
 
 }
