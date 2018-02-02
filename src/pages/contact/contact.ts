@@ -52,7 +52,7 @@ export class ContactPage implements OnInit{
 
      	// console.log(JSON.stringify(this.msgContact.value));
 
-        this.http.post('https://www.aformac-vichy-app7.ovh/api/contact?api_token=TeaTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV', JSON.stringify(this.msgContact.value)).subscribe(
+        this.http.post('https://www.aformac-vichy-app7.ovh/api/contact?api_token=R3gMQ48YL1h6P40cqGgLO5vvQcPY0CNgO3BitO39g9ni5PTjyEZ3a9vwXpyx', JSON.stringify(this.msgContact.value)).subscribe(
 
             data => {
 

@@ -20,7 +20,7 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ContactPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{font: any,title: string, component: any}>;
 
