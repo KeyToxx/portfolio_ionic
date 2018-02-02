@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -18,7 +18,7 @@ export class ContactPage implements OnInit{
 	// 	'message': null
 	// };
 
-  constructor(public navCtrl: NavController,private formCtc: FormBuilder,public http: Http) {
+  constructor(public navCtrl: NavController,public alertCtrl: AlertController, public loadingCtrl: LoadingController, private formCtc: FormBuilder,public http: Http) {
 
   }
 
@@ -42,14 +42,15 @@ export class ContactPage implements OnInit{
 
     onSubmit(){ 
 
-     //    let loading = this.loadingCtrl.create({
+        let loading = this.loadingCtrl.create({
 
-     //        content: "Chargement ..."
+            content: "Chargement ..."
 
-    	// });
+    	  });
 
-     //    loading.present();    
-     	console.log(JSON.stringify(this.msgContact.value));
+        loading.present(); 
+
+     	// console.log(JSON.stringify(this.msgContact.value));
 
         this.http.post('https://www.aformac-vichy-app7.ovh/api/contact?api_token=TeaTyFS98mGpNfb4T6UHGCVwD9hNHDNia12n5XZGH21rMirkfS6eQEW7QJRV', JSON.stringify(this.msgContact.value)).subscribe(
 
@@ -57,23 +58,23 @@ export class ContactPage implements OnInit{
 
             	console.log(data);
 
-                // let alertSuccess = this.alertCtrl.create({
+                let alertSuccess = this.alertCtrl.create({
 
-                //     title: 'Message envoyé !',
+                    title: 'Message envoyé !',
 
-                //     subTitle: 'Merci d\'avoir pris le temps de m\'écrire.',
+                    subTitle: 'Merci d\'avoir pris le temps de m\'écrire.'+'<br><br>'+'Je répondrai à ce message dans les plus bref délais.',
 
-                //     buttons: ['OK']
+                    buttons: ['OK']
 
-                // });
+                });
 
 
 
                 this.msgContact.reset();
 
-                // loading.dismiss();
+                loading.dismiss();
 
-                // alertSuccess.present();
+                alertSuccess.present();
 
 
 
@@ -83,19 +84,19 @@ export class ContactPage implements OnInit{
 
             	console.log(error);
 
-                // let alertSuccess = this.alertCtrl.create({
+                let alertSuccess = this.alertCtrl.create({
 
-                //     title: 'Oops !',
+                    title: 'Oops !',
 
-                //     subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement ou me contacter directement à kozluk.pierre(at)gmail(dot)com.',
+                    subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement ou me contacter directement à kozluk.pierre(at)gmail(dot)com.',
 
-                //     buttons: ['OK']
+                    buttons: ['OK']
 
-                // });
+                });
 
-                // loading.dismiss();
+                loading.dismiss();
 
-                // alertSuccess.present();
+                alertSuccess.present();
 
             }
 
